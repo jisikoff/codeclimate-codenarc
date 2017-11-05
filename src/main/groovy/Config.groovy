@@ -18,8 +18,21 @@ class Config {
 
 
     def ruleSet() {
-        if(parsedConfig?.config?.file) {
-            def files = [parsedConfig?.config?.file] //TODO: just support one for now
+        def config = parsedConfig.config
+
+        def filepath = null
+
+        switch(config) {
+            case String:
+                filepath = config
+                break
+            case Map:
+                filepath = config.file
+                break
+        }
+
+        if(filepath) {
+            def files = [filepath] //TODO: just support one for now
             files?.each { checkFileExists(it) }
             return files?.collect { "file:" + appContext.codeFolder + File.separator + it }?.join(",")
         }
