@@ -6,3 +6,5 @@ build
 out
 .iml
 .bat
+codeclimate-codenarc-*.jar
+*.iml

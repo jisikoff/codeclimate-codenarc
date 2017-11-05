@@ -3,8 +3,8 @@ plugins {
     id 'idea'
 }
 
-group = "org.codenarc"
-archivesBaseName = "CodeNarc"
+group = "com.cinchfinancial.codeclimate"
+archivesBaseName = "codeclimate-codenarc"
 version = "1.0"
 
 sourceCompatibility = '1.8'
@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.codenarc', name: 'CodeNarc', version: '1.0'
     compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.12"
     compile 'org.apache.ant:ant:1.9.4'
     testCompile "org.slf4j:slf4j-simple:1.7.25"
@@ -28,4 +29,11 @@ sourceSets {
         java { srcDirs = [] }
         groovy { srcDirs = ['src/main/groovy', 'src/main/java'] }
     }
+}
+
+task copyLib(type: Copy) {
+    from("${buildDir}/libs") {
+        include "*.jar"
+    }
+    into "${projectDir}/lib"
 }
