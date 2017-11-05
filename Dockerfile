@@ -10,9 +10,6 @@ RUN apk update && \
 
 RUN adduser -u 9000 -D app
 
-COPY ./bin /usr/src/app/bin
-RUN /usr/src/app/bin/install-pmd.sh
-
 VOLUME /code
 WORKDIR /code
 COPY . /usr/src/app
@@ -20,4 +17,4 @@ RUN chown -R app:app /usr/src/app
 
 USER app
 
-CMD ["/usr/src/app/pmd", "--codeFolder=/code", "--configFile=/config.json"]
+CMD ["/usr/src/app/codenarc", "--codeFolder=/code", "--configFile=/config.json"]

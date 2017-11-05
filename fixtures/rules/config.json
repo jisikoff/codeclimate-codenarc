@@ -5,6 +5,6 @@
     "rules": ["java-basic", "java-design"]
   },
   "include_paths": [
-    "Main.java"
+    "Main.groovy"
   ]
 }

@@ -1,9 +1,9 @@
 {
   "enabled": true,
   "channel": "beta",
-  "config": "rules.xml",
+  "config": "ruleset.xml",
   "include_paths": [
-    "Main.java"
+    "Main.groovy"
   ]
 }
 

@@ -1,0 +1,31 @@
+plugins {
+    id 'groovy'
+    id 'idea'
+}
+
+group = "org.codenarc"
+archivesBaseName = "CodeNarc"
+version = "1.0"
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+dependencies {
+    compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.12"
+    compile 'org.apache.ant:ant:1.9.4'
+    testCompile "org.slf4j:slf4j-simple:1.7.25"
+    testCompile 'commons-cli:commons-cli:1.4'
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs = ['src/main/groovy', 'src/main/java'] }
+    }
+}

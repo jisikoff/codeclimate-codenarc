@@ -1,0 +1,38 @@
+import static org.junit.Assert.*
+import org.junit.*
+
+class ConfigTest {
+  @Ignore
+  @Test
+  public void defaultRuleSet() {
+    def config = new Config([configFile: "/usr/src/app/fixtures/default/config.json", codeFolder: "/usr/src/app/fixtures/default"])
+    assertEquals "java-basic", config.ruleSet()
+  }
+
+  @Test
+  public void specifiedRuleSetFile() {
+    def config = new Config([configFile: "/usr/src/app/fixtures/specified_file/config.new.json", codeFolder: "/usr/src/app/fixtures/specified_file"])
+    assertEquals "ruleset.xml", config.ruleSet()
+  }
+
+  @Ignore
+  @Test
+  public void honorPresentRules() {
+    def config = new Config([configFile: "/usr/src/app/fixtures/ruleset_default_file/config.json", codeFolder: "/usr/src/app/fixtures/ruleset_default_file"])
+    assertEquals "/usr/src/app/fixtures/ruleset_default_file/ruleset.xml", config.ruleSet()
+  }
+
+  @Ignore
+  @Test(expected = IllegalArgumentException.class)
+  public void doesNotAllowToMixRulesAndFile() {
+    def config = new Config([configFile: "/usr/src/app/fixtures/rules/config.mix.json", codeFolder: "/usr/src/app/fixtures/rules"])
+    config.ruleSet()
+  }
+
+  @Ignore
+  @Test
+  public void acceptRulesSimpleNames() {
+    def config = new Config([configFile: "/usr/src/app/fixtures/rules/config.json", codeFolder: "/usr/src/app/fixtures/rules"])
+    assertEquals "java-basic,java-design", config.ruleSet()
+  }
+}
