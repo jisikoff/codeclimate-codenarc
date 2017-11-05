@@ -3,4 +3,6 @@ build
 *.class
 .idea
 .gradle
-
+out
+.iml
+.bat
