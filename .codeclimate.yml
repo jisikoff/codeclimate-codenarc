@@ -1,11 +1,4 @@
 ---
 engines:
-  fixme:
+  codenarc:
     enabled: true
-  pmd:
-    enabled: true
-    channel: beta
-ratings:
-  paths: []
-exclude_paths:
-  - "test/"

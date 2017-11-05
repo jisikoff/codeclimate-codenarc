@@ -5,7 +5,7 @@
     "file": "ruleset.xml"
   },
   "include_paths": [
-    "Main.groovy"
+    "**.groovy"
   ]
 }
 

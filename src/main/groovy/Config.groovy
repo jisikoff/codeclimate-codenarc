@@ -21,16 +21,16 @@ class Config {
         if(parsedConfig?.config?.file) {
             def files = [parsedConfig?.config?.file] //TODO: just support one for now
             files?.each { checkFileExists(it) }
-            return files?.join(",")
+            return files?.collect { "file:" + appContext.codeFolder + File.separator + it }?.join(",")
         }
     }
 
-    private def pathsToInclude() {
-        return parsedConfig.include_paths?.collect { appContext.codeFolder + File.pathSeparator + it }?.join(",")
-    }
+//    private def pathsToInclude() {
+//        return parsedConfig.include_paths?.collect { appContext.codeFolder + File.separator + it }?.join(",")
+//    }
 
     private def pathsToExclude() {
-        return parsedConfig.exclude_paths?.collect { appContext.codeFolder + File.pathSeparator + it }?.join(",")
+        return parsedConfig.exclude_paths?.collect { appContext.codeFolder + File.separator + it }?.join(",")
     }
 
     private checkFileExists(String configFile) {
@@ -41,5 +41,23 @@ class Config {
             System.err.println "Config file ${configFile} not found"
             System.exit(1)
         }
+    }
+
+    private def pathsToInclude() {
+        def includePaths = parsedConfig.include_paths?.join(" ")
+        def codeFolder = new File(appContext.codeFolder)
+
+        def files = new FileNameFinder().getFileNames(appContext.codeFolder, includePaths)
+
+        def i = files.iterator()
+        while(i.hasNext()) {
+            def name = i.next()
+            if(!name.endsWith(".groovy")) {
+                i.remove()
+            }
+        }
+
+        def fileNames = files.toString()
+        fileNames.substring(1, fileNames.length()-1).replaceAll("\\s+","")
     }
 }
