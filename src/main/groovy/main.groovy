@@ -24,10 +24,16 @@ class Main {
         def excludesString = config.pathsToExclude ? "-excludes=${config.pathsToExclude}" : ""
         def rulesetString = config.ruleSet() ? "-rulesetfiles=${config.ruleSet()}" : ""
 
+        //good command with hardcoded classpath TODO:make more flexible with directory classpath
         def cmd = "java -Dorg.slf4j.simpleLogger.defaultLogLevel=off -classpath /usr/src/app/lib/groovy-all-2.4.12.jar:/usr/src/app/lib/codeclimate-codenarc-1.0.jar:/usr/src/app/lib/CodeNarc-1.0.jar:/usr/src/app/lib/GMetrics-1.0.jar:/usr/src/app/lib/slf4j-api-1.7.25.jar:/usr/src/app/lib/slf4j-simple-1.7.25.jar org.codenarc.CodeNarc -basedir=${config.appContext.codeFolder} ${rulesetString} ${includesString} ${excludesString} -report=CodeClimateReportWriter".replaceAll(/\s\s+/, ' ')
 
-        //println("Executing: **** ${cmd}")
-//minimal:        def cmd = "java -Dorg.slf4j.simpleLogger.defaultLogLevel=off -classpath /usr/src/app/lib/groovy-all-2.4.12.jar:/usr/src/app/lib/CodeNarc-1.0.jar:/usr/src/app/lib/GMetrics-1.0.jar:/usr/src/app/lib/slf4j-api-1.7.25.jar:/usr/src/app/lib/slf4j-simple-1.7.25.jar org.codenarc.CodeNarc"
+        //minimal for testing:
+        //def cmd = "java -Dorg.slf4j.simpleLogger.defaultLogLevel=off -classpath /usr/src/app/lib/groovy-all-2.4.12.jar:/usr/src/app/lib/CodeNarc-1.0.jar:/usr/src/app/lib/GMetrics-1.0.jar:/usr/src/app/lib/slf4j-api-1.7.25.jar:/usr/src/app/lib/slf4j-simple-1.7.25.jar org.codenarc.CodeNarc"
+
+        //Log the command out
+        def printErr = System.err.&println
+        printErr(cmd)
+
         execute(cmd)
      }
 }
