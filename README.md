@@ -11,9 +11,10 @@ categorize the hundreds of various into categories
 ### Installation
 
 1. If you haven't already, [install the Code Climate CLI](https://github.com/codeclimate/codeclimate).
-2. Run `codeclimate engines:enable codenarc`. This command both installs the engine and enables it in your `.codeclimate.yml` file.
-3. You're ready to analyze! Browse into your project's folder and run `codeclimate analyze`.
-4. To add you custom codenarc rules, open `.codeclimate.yml` and add a `config` entry pointing to your `ruleset.xml` file:
+2. clone the repo and run `make test` to build the image locally and test it
+3. Add a .codeclimate.yml to your projects folder that enables the experimental codenarc engine (see below) `.codeclimate.yml` file.
+4. You're ready to analyze! Browse into your project's folder and run `CODECLIMATE_DEBUG=1 codeclimate analyze  --dev   `.
+5. To add you custom codenarc rules, open `.codeclimate.yml` and add a `config` entry pointing to your `ruleset.xml` file:
 ```yml
 engines:
   codenarc:
