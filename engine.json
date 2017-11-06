@@ -1,12 +1,12 @@
 {
-	"name": "codeclimate-codenarc",
-	"description": "Static code analysis tool for Groovy",
+  "name": "codeclimate-codenarc",
+  "description": "Static code analysis tool for Groovy",
   "maintainer": {
     "name": "Code Climate",
     "email": "hello@codeclimate.com"
   },
-	"languages": [
-		"Groovy"
-	],
-	"version": "1.0.0"
+  "languages": [
+    "Groovy"
+  ],
+  "version": "1.0.0"
 }
