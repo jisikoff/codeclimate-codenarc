@@ -1,8 +1,10 @@
 # Code Climate CodeNarc Engine
 ##WORK IN PROGRESS
-- Currently depends on a custom build of codenarc included here. Hoping to eliminate that soon.
-- This is not working yet due to incompatible json output formats.
+
 - only will run locally in dev mode after building locally from docker file
+- all issues are categorized as "Style" right now until I can go through and manually 
+categorize the hundreds of various into categories
+- need to go through the qa process mentioned here: (https://docs.codeclimate.com/v1.0/docs/building-a-code-climate-engine)
 
 `codeclimate-codenarc` is a Code Climate engine that wraps the [CodeNarc](https://github.com/CodeNarc/CodeNarc) static analysis tool. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
 
@@ -14,7 +16,7 @@
 4. To add you custom codenarc rules, open `.codeclimate.yml` and add a `config` entry pointing to your `ruleset.xml` file:
 ```yml
 engines:
-  pmd:
+  codenarc:
     enabled: true
     config: ruleset.xml
 ```
