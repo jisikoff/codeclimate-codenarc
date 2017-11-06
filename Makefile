@@ -3,7 +3,7 @@
 IMAGE_NAME ?= codeclimate/codeclimate-codenarc
 
 image:
-	./gradlew infra
+	./gradlew clean compileGroovy infra
 	docker build --rm -t $(IMAGE_NAME) .
 
 test: image

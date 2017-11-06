@@ -50,4 +50,4 @@ task copyTestLibs(type: Copy) {
     from configurations.testCompile
 }
 
-task infra(dependsOn: ["copyLibs", "copyTestLibs"])
+task infra(dependsOn: ["copyLibs"])
