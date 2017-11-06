@@ -82,8 +82,8 @@ class CodeClimateReportWriter extends AbstractReportWriter {
                 location   : [
                         path : path,
                         lines: [
-                                begin: violation?.lineNumber,
-                                end  : violation?.lineNumber,
+                                begin: violation?.lineNumber ? violation?.lineNumber : 0,
+                                end  : violation?.lineNumber ? violation?.lineNumber : 0,
                         ]
                 ],
                 severity   : getSeverity(violation?.rule?.priority)

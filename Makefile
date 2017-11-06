@@ -3,13 +3,8 @@
 IMAGE_NAME ?= codeclimate/codeclimate-codenarc
 
 image:
+	./gradlew infra
 	docker build --rm -t $(IMAGE_NAME) .
 
 test: image
-	docker run --rm --workdir /usr/src/app $(IMAGE_NAME) ./gradlew clean test --debug
-
-upgrade:
-	docker run --rm \
-		--workdir /usr/src/app \
-		--volume $(PWD):/usr/src/app \
-		$(IMAGE_NAME) ./bin/upgrade.sh
+		docker run --rm -ti -w /usr/src/app -u root $(IMAGE_NAME) ./gradlew clean test --info

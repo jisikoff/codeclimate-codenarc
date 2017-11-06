@@ -11,6 +11,7 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
+    jcenter()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     maven { url "http://repo.maven.apache.org/maven2" }
 }
@@ -18,8 +19,12 @@ repositories {
 dependencies {
     compile group: 'org.codenarc', name: 'CodeNarc', version: '1.0'
     compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.4.12"
-    compile 'org.apache.ant:ant:1.9.4'
-    testCompile "org.slf4j:slf4j-simple:1.7.25"
+
+    runtime "org.slf4j:slf4j-api:1.7.25"
+    runtime "org.slf4j:slf4j-simple:1.7.25"
+    runtime  group: 'org.gmetrics', name: 'GMetrics', version: '1.0'
+
+    testCompile 'org.apache.ant:ant:1.9.4'
     testCompile 'commons-cli:commons-cli:1.4'
     testCompile 'junit:junit:4.12'
 }
@@ -31,9 +36,18 @@ sourceSets {
     }
 }
 
-task copyLib(type: Copy) {
+task copyLibs(type: Copy, dependsOn:["jar"]) {
+    from configurations.runtimeClasspath
     from("${buildDir}/libs") {
         include "*.jar"
     }
     into "${projectDir}/lib"
 }
+
+
+task copyTestLibs(type: Copy) {
+    into "${buildDir}/lib"
+    from configurations.testCompile
+}
+
+task infra(dependsOn: ["copyLibs", "copyTestLibs"])

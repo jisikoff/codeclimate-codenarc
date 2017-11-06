@@ -18,8 +18,16 @@ class Config {
 
 
     def ruleSet() {
-        def config = parsedConfig.config
+        def rulesets = []
 
+        //add the default if exists
+        def defaultFileName = "ruleset.xml"
+        def defaultFile = new File(appContext.codeFolder, defaultFileName)
+        if(defaultFile.exists())
+            rulesets.add("file:" + appContext.codeFolder + File.separator + defaultFileName)
+
+        //add the the other rulesets
+        def config = parsedConfig.config
         def filepath = null
 
         switch(config) {
@@ -34,8 +42,9 @@ class Config {
         if(filepath) {
             def files = [filepath] //TODO: just support one for now
             files?.each { checkFileExists(it) }
-            return files?.collect { "file:" + appContext.codeFolder + File.separator + it }?.join(",")
+            rulesets.addAll(files?.collect { "file:" + appContext.codeFolder + File.separator + it })
         }
+        return rulesets.toSet()?.join(",")
     }
 
 //    private def pathsToInclude() {
@@ -46,6 +55,7 @@ class Config {
         return parsedConfig.exclude_paths?.collect { appContext.codeFolder + File.separator + it }?.join(",")
     }
 
+    //if you specified the rules they should exist
     private checkFileExists(String configFile) {
         def rules = new File(appContext.codeFolder, configFile)
         if (rules.exists()) {

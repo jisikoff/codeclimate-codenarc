@@ -8,3 +8,4 @@ out
 .bat
 codeclimate-codenarc-*.jar
 *.iml
+lib

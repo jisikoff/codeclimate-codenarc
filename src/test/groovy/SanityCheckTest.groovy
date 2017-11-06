@@ -12,15 +12,16 @@ class SanityCheckTest {
 
     proc.waitForProcessOutput(out, err)
 
+    println(out)
+    println(err)
+
     return [proc, out, err]
   }
 
   @Test
   void sanityCheck() {
     def (proc, out, err) = execute("/usr/src/app/codenarc --codeFolder=/usr/src/app/fixtures/default --configFile=/usr/src/app/fixtures/default/config.json")
-    println(out)
-    println(err)
-    assert(false)
+
     assert !out.toString().isEmpty()
     assert err.toString().isEmpty()
     assert proc.exitValue() == 0
@@ -30,8 +31,7 @@ class SanityCheckTest {
   void checkConfigBackwardCompatibility() {
     def (proc, out, _err) = execute("/usr/src/app/codenarc --codeFolder=/usr/src/app/fixtures/specified_file --configFile=/usr/src/app/fixtures/specified_file/config.new.json")
     def (procOld, outOld, _errOld) = execute("/usr/src/app/codenarc --codeFolder=/usr/src/app/fixtures/specified_file --configFile=/usr/src/app/fixtures/specified_file/config.old.json")
-    println(out)
-    println(err)
+
     assert proc.exitValue() == procOld.exitValue()
     assert out.toString().equals(outOld.toString())
     assert proc.exitValue() == 0
