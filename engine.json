@@ -2,11 +2,12 @@
   "name": "codeclimate-codenarc",
   "description": "Static code analysis tool for Groovy",
   "maintainer": {
-    "name": "Code Climate",
-    "email": "hello@codeclimate.com"
+    "name": "Jeremy Isikoff",
+    "email": "jeremy+codeclimate-codenarc@cinchfinancial.com"
   },
   "languages": [
     "Groovy"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "spec_version": "0.3.1"
 }

@@ -74,6 +74,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 111
                 }
             },
+            "remediation_points": 50000,
             "severity": "critical"
         }\u0000
         {
@@ -91,6 +92,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 333
                 }
             },
+            "remediation_points": 50000,
             "severity": "minor"
         }\u0000
         {
@@ -108,6 +110,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 333
                 }
             },
+            "remediation_points": 50000,
             "severity": "minor"
         }\u0000
         {
@@ -125,6 +128,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 111
                 }
             },
+            "remediation_points": 50000,
             "severity": "critical"
         }\u0000
         {
@@ -142,6 +146,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 222
                 }
             },
+            
             "severity": "major"
         }\u0000
         {
@@ -159,6 +164,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 333
                 }
             },
+            "remediation_points": 50000,
             "severity": "minor"
         }\u0000
         {
@@ -176,6 +182,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
                     "end": 222
                 }
             },
+            "remediation_points": 50000,
             "severity": "major"
         }\u0000
     """

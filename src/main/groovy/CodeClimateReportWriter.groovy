@@ -78,7 +78,7 @@ class CodeClimateReportWriter extends AbstractReportWriter {
                 check_name : "${violation?.rule?.name}",
                 description: "${violation?.message}",
                 content    : [body: "${getDescriptionForRule(violation?.rule)}"],
-                categories : ['Style'],
+                categories : RuleData.rules.get(violation?.rule?.name)?.categories ? RuleData.rules.get(violation?.rule?.name)?.categories : ['Style'],
                 location   : [
                         path : path,
                         lines: [
@@ -86,6 +86,7 @@ class CodeClimateReportWriter extends AbstractReportWriter {
                                 end  : violation?.lineNumber ? violation?.lineNumber : 0,
                         ]
                 ],
+                remediation_points: RuleData.rules.get(violation?.rule?.name)?.points ? RuleData.rules.get(violation?.rule?.name)?.points : 50000,
                 severity   : getSeverity(violation?.rule?.priority)
         ]
     }
