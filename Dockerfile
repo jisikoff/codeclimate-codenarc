@@ -1,6 +1,6 @@
 FROM groovy:jre8-alpine
 
-MAINTAINER "Code Climate <hello@codeclimate.com>"
+MAINTAINER "Jeremy Isikoff <jeremy+codeclimate-codenarc@cinchfinancial.com>"
 
 USER root
 
