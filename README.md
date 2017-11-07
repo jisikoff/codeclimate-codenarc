@@ -1,11 +1,8 @@
 # Code Climate CodeNarc (Groovy) Engine
 `codeclimate-codenarc` is a Code Climate engine for Groovy that wraps the [CodeNarc](https://github.com/CodeNarc/CodeNarc) static analysis tool. You can run it on your command line using the Code Climate CLI.
 
-### WORK IN PROGRESS
-
 - only will run locally in dev mode after building locally from docker file
-- all issues are categorized as "Style" right now until I can go through and manually 
-categorize the hundreds of various rules
+- categories for the rules could use some curating along with the point values
 - need to go through the qa process mentioned here: (https://docs.codeclimate.com/v1.0/docs/building-a-code-climate-engine)
 
 ### Installation

@@ -22,7 +22,7 @@ import org.codenarc.results.Results
 import org.codenarc.rule.Violation
 
 /**
- * ReportWriter that generates an XML report.
+ * ReportWriter that generates output in CodeClimate format.
  */
 class CodeClimateReportWriter extends AbstractReportWriter {
 
