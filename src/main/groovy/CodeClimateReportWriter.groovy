@@ -76,7 +76,7 @@ class CodeClimateReportWriter extends AbstractReportWriter {
         return [
                 type       : 'issue',
                 check_name : "${violation?.rule?.name}",
-                description: "${violation?.message}",
+                description: violation?.message ? "${violation?.message}" : "${getDescriptionForRule(violation?.rule)}",
                 content    : [body: "${getDescriptionForRule(violation?.rule)}"],
                 categories : RuleData.rules.get(violation?.rule?.name)?.categories ? RuleData.rules.get(violation?.rule?.name)?.categories : ['Style'],
                 location   : [

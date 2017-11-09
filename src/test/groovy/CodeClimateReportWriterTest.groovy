@@ -61,7 +61,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
             private static final REPORT_JSON = """{
             "type": "issue",
             "check_name": "RULE1",
-            "description": null,
+            "description": "No description provided for rule named [RULE1]",
             "content": {"body":"No description provided for rule named [RULE1]"},
             "categories": [
                 "Style"
@@ -115,7 +115,7 @@ class CodeClimateReportWriterTest extends AbstractTestCase {
         {
             "type": "issue",
             "check_name": "RULE1",
-            "description": null,
+            "description": "No description provided for rule named [RULE1]",
             "content": {"body":"No description provided for rule named [RULE1]"},
             "categories": [
                 "Style"
