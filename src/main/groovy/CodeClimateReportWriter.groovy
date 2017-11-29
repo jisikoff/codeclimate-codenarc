@@ -49,6 +49,7 @@ class CodeClimateReportWriter extends AbstractReportWriter {
             if (item) {
                 builder.call(item)
                 writer.append(builder.toString() + '\0' + '\n')
+                writer.flush()
             }
         }
         writer.flush()
