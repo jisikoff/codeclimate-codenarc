@@ -29,7 +29,10 @@
         </rule-config>
     </ruleset-ref>
     <ruleset-ref path="rulesets/exceptions.xml"/>
-    <ruleset-ref path="rulesets/formatting.xml"/>
+    <ruleset-ref path="rulesets/formatting.xml">
+        <exclude name="ClassEndsWithBlankLine"/>
+        <exclude name="ClassStartsWithBlankLine"/>
+    </ruleset-ref>
     <ruleset-ref path="rulesets/generic.xml"/>
     <ruleset-ref path="rulesets/grails.xml"/>
     <ruleset-ref path="rulesets/groovyism.xml"/>

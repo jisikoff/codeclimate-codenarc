@@ -3,11 +3,11 @@
   "description": "Static code analysis tool for Groovy",
   "maintainer": {
     "name": "Jeremy Isikoff",
-    "email": "jeremy+codeclimate-codenarc@cinchfinancial.com"
+    "email": "jisikoff+codeclimate-codenarc@gmail.com"
   },
   "languages": [
     "Groovy"
   ],
-  "version": "1.0.0",
+  "version": "1.3.0",
   "spec_version": "0.3.1"
 }
