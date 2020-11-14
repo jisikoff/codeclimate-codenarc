@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "channel": "beta",
+  "include_paths": [
+    "/",
+    "1.groovy",
+    "2.groovy",
+    "3.groovy",
+    "fileToFilter.txt",
+    "somedirectory/"
+  ]
+}
