@@ -1,6 +1,8 @@
 import groovy.json.JsonSlurper
 import groovy.util.FileNameFinder
 
+import java.nio.file.Paths
+
 class Config {
     static String DEFAULT_RULES = "java-basic"
     def args
@@ -52,7 +54,7 @@ class Config {
 //    }
 
     private def pathsToExclude() {
-        return parsedConfig.exclude_paths?.collect { appContext.codeFolder + File.separator + it }?.join(",")
+        return parsedConfig.exclude_paths?.collect { Paths.get(appContext.codeFolder, it) }?.join(",")
     }
 
     //if you specified the rules they should exist
@@ -67,20 +69,8 @@ class Config {
     }
 
     private def pathsToInclude() {
-        def includePaths = parsedConfig.include_paths?.join(" ")
-        def codeFolder = new File(appContext.codeFolder)
-
-        def files = new FileNameFinder().getFileNames(appContext.codeFolder, includePaths)
-
-        def i = files.iterator()
-        while(i.hasNext()) {
-            def name = i.next()
-            if(!name.endsWith(".groovy")) {
-                i.remove()
-            }
-        }
-
-        def fileNames = files.toString()
-        fileNames.substring(1, fileNames.length()-1).replaceAll("\\s+","")
+        def directories = parsedConfig.include_paths?.findAll {it.endsWith(File.separator) }?.collect { it + "**.groovy"}
+        def files = parsedConfig.include_paths?.findAll {it.endsWith(".groovy")}
+        (directories + files)?.collect { Paths.get(appContext.codeFolder, it.toString()) }?.join(",")
     }
 }

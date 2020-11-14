@@ -23,4 +23,11 @@ class ConfigTest {
     assertEquals "file:fixtures/specified_file/ruleset.xml", config.ruleSet() //TODO:figure out how this doesn't need to be classpath file:
   }
 
+  @Test
+  public void filterFilesNotGroovyNew() {
+    def config = new Config([configFile: "fixtures/filter_paths_test/config.json", codeFolder: "/usr/src/app/fixtures/default"])
+    assertEquals "/usr/src/app/fixtures/default/**.groovy,/usr/src/app/fixtures/default/somedirectory/**.groovy,/usr/src/app/fixtures/default/1.groovy,/usr/src/app/fixtures/default/2.groovy,/usr/src/app/fixtures/default/3.groovy", config.pathsToAnalyze
+    assertTrue !config.pathsToAnalyze.contains("filefileToFilter.txt")
+  }
+
 }
